@@ -11,6 +11,8 @@ namespace StudentDb.UserInterface
     class RegistrationUI
     {
         private RegistrationData registraionData = new RegistrationData();
+        StudentUI studnetUI = new StudentUI();
+        CourseUI courseUI = new CourseUI();
 
         public void Start()
         {
@@ -78,6 +80,9 @@ namespace StudentDb.UserInterface
         {
             Student studentObj = new Student();
 
+            studnetUI.Query();
+            Console.WriteLine();
+
             Console.Write("Enter Student ID: ");
             studentObj.ID = int.Parse(Console.ReadLine());
 
@@ -87,6 +92,8 @@ namespace StudentDb.UserInterface
         public void QueryByCourse()
         {
             Course courseObj = new Course();
+
+            courseUI.Query();
 
             Console.Write("Enter Course ID: ");
             courseObj.ID = int.Parse(Console.ReadLine());
@@ -102,9 +109,6 @@ namespace StudentDb.UserInterface
         public void Insert()
         {
             Registration regObj = new Registration();
-
-            StudentUI studnetUI = new StudentUI();
-            CourseUI courseUI = new CourseUI();
 
             studnetUI.Query();
             Console.WriteLine();

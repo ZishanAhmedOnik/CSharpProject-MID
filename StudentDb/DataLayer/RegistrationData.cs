@@ -35,43 +35,97 @@ namespace StudentDb.DataLayer
         public void QueryByStudent(Student studentObje)
         {
             string studentQuery = "SELECT * FROM Student WHERE ID = @ID";
-            string registrationQuery = "SELECT * FROM Registraton WHERE STUDENTID = @ID";
+            string registrationQuery = "SELECT COURSEID FROM Registraton WHERE STUDENTID = @ID";
 
             SqlCommand studentCommand = new SqlCommand(studentQuery);
             SqlCommand registrationCommand = new SqlCommand(registrationQuery);
 
             SqlParameter studentIDParam = new SqlParameter("@ID", SqlDbType.Int);
+            SqlParameter courSeIDParam = new SqlParameter("@ID", SqlDbType.Int);
+
             studentIDParam.Value = studentObje.ID;
+            courSeIDParam.Value = studentObje.ID;
+
             studentCommand.Parameters.Add(studentIDParam);
-            registrationCommand.Parameters.Add(studentIDParam);
+            registrationCommand.Parameters.Add(courSeIDParam);
 
             Console.WriteLine("Studnet Info: ");
             CommonUI.ShowTable(dataAccess.Query(studentCommand));
 
             
             Console.WriteLine("Registration: ");
-            CommonUI.ShowTable(dataAccess.Query(registrationCommand));
+            ShowCourseName(dataAccess.Query(registrationCommand));
+        }
+
+        private void ShowCourseName(DataTable dt)
+        {
+            string courseCommand = "SELECT NAME FROM Course WHERE ID = ";
+
+            bool start = true;
+
+            for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (start)
+                {
+                    start = false;
+                }
+                else
+                {
+                    courseCommand += " OR ID = ";
+                }
+                courseCommand += dt.Rows[i][0];
+            }
+
+            SqlCommand query = new SqlCommand(courseCommand);
+            CommonUI.ShowTable(dataAccess.Query(query));
         }
 
         public void QueryByCourse(Course courseObj)
         {
             string courseQuery = "SELECT * FROM Course WHERE ID = @ID";
-            string registraionQuery = "SELECT * FROM Registraton WHERE COURSEID = @ID";
+            string registraionQuery = "SELECT STUDENTID FROM Registraton WHERE COURSEID = @ID";
 
             SqlCommand courseCommand = new SqlCommand(courseQuery);
             SqlCommand registraionCommand = new SqlCommand(registraionQuery);
 
             SqlParameter courseIDParam = new SqlParameter("@ID", SqlDbType.Int);
+            SqlParameter regCourseIDParam = new SqlParameter("@ID", SqlDbType.Int);
+
             courseIDParam.Value = courseObj.ID;
+            regCourseIDParam.Value = courseObj.ID;
 
             courseCommand.Parameters.Add(courseIDParam);
-            registraionCommand.Parameters.Add(courseIDParam);
+            registraionCommand.Parameters.Add(regCourseIDParam);
 
             Console.WriteLine("Course Info: ");
             CommonUI.ShowTable(dataAccess.Query(courseCommand));
 
             Console.WriteLine("Registration Info: ");
-            CommonUI.ShowTable(dataAccess.Query(registraionCommand));
+            
+            ShowStudentName(dataAccess.Query(registraionCommand));
+        }
+
+        private void ShowStudentName(DataTable dt)
+        {
+            string courseCommand = "SELECT NAME FROM Student WHERE ID = ";
+
+            bool start = true;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (start)
+                {
+                    start = false;
+                }
+                else
+                {
+                    courseCommand += " OR ID = ";
+                }
+                courseCommand += dt.Rows[i][0];
+            }
+
+            SqlCommand query = new SqlCommand(courseCommand);
+            CommonUI.ShowTable(dataAccess.Query(query));
         }
 
         public DataTable QueryFullTable()
@@ -110,6 +164,9 @@ namespace StudentDb.DataLayer
 
             SqlParameter courseIDParam = new SqlParameter("@COURSEID", SqlDbType.Int);
             courseIDParam.Value = regObj.COURSEID;
+
+            deleteCommand.Parameters.Add(studentIDParam);
+            deleteCommand.Parameters.Add(courseIDParam);
 
             dataAccess.Execute(deleteCommand);
         }
