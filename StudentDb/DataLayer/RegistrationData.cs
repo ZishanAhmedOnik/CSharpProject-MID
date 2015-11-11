@@ -60,11 +60,20 @@ namespace StudentDb.DataLayer
 
             SqlParameter courseIDParam = new SqlParameter("@COURSEID", SqlDbType.Int);
             courseIDParam.Value = regObj.COURSEID;
+
+            dataAccess.Execute(deleteCommand);
         }
 
-        public void DeleteAllRegistraion(Registration regObj)
+        public void DeleteAllRegistraion(int studentID)
         {
+            string deleteAllQuery = "DELETE Registraion WHERE ID = @STUDENTID";
 
+            SqlCommand deleteAllCommand = new SqlCommand(deleteAllQuery);
+
+            SqlParameter studentIdParam = new SqlParameter("@STUDENTID", SqlDbType.Int);
+            studentIdParam.Value = studentID;
+
+            dataAccess.Execute(deleteAllCommand);
         }
     }
 }
