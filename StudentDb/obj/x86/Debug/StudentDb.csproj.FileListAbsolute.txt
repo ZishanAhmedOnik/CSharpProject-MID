@@ -1,0 +1,10 @@
+E:\C#PRAC\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\bin\Debug\StudentDb.exe
+E:\C#PRAC\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\bin\Debug\StudentDb.pdb
+E:\C#PRAC\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\obj\x86\Debug\StudentDb.exe
+E:\C#PRAC\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\obj\x86\Debug\StudentDb.pdb
+E:\C#PRAC\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\obj\x86\Debug\StudentDb.csprojResolveAssemblyReference.cache
+D:\Personal Works\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\obj\x86\Debug\StudentDb.exe
+D:\Personal Works\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\obj\x86\Debug\StudentDb.pdb
+D:\Personal Works\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\bin\Debug\StudentDb.exe
+D:\Personal Works\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\bin\Debug\StudentDb.pdb
+D:\Personal Works\fall-15-16-layarc-master\LayArcSample2\StudentDb\StudentDb\obj\x86\Debug\StudentDb.csprojResolveAssemblyReference.cache
