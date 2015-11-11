@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer\CourseData.cs" />
+    <Compile Include="DataLayer\RegistrationData.cs" />
     <Compile Include="DataLayer\StudentData.cs" />
     <Compile Include="DataLayer\TeacherData.cs" />
     <Compile Include="Entities\Course.cs" />

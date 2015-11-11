@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using StudentDb.Framework;
 using StudentDb.Entities;
+using StudentDb.UserInterface;
 
 namespace StudentDb.DataLayer
 {
@@ -29,6 +30,55 @@ namespace StudentDb.DataLayer
             insertCommand.Parameters.Add(courseIDParam);
 
             dataAccess.Execute(insertCommand);
+        }
+
+        public void QueryByStudent(Student studentObje)
+        {
+            string studentQuery = "SELECT * FROM Student WHERE ID = @ID";
+            string registrationQuery = "SELECT * FROM Registraion WHERE STUDENTID = @ID";
+
+            SqlCommand studentCommand = new SqlCommand(studentQuery);
+            SqlCommand registrationCommand = new SqlCommand(registrationQuery);
+
+            SqlParameter studentIDParam = new SqlParameter("@ID", SqlDbType.Int);
+            studentIDParam.Value = studentObje.ID;
+            studentCommand.Parameters.Add(studentIDParam);
+            registrationCommand.Parameters.Add(studentIDParam);
+
+            Console.WriteLine("Studnet Info: ");
+            CommonUI.ShowTable(dataAccess.Query(studentCommand));
+
+            
+            Console.WriteLine("Registration: ");
+            CommonUI.ShowTable(dataAccess.Query(registrationCommand));
+        }
+
+        public void QueryByCourse(Course courseObj)
+        {
+            string courseQuery = "SELECT * FROM Course WHERE ID = @ID";
+            string registraionQuery = "SELECT * FROM Registration WHERE COURSEID = @ID";
+
+            SqlCommand courseCommand = new SqlCommand(courseQuery);
+            SqlCommand registraionCommand = new SqlCommand(registraionQuery);
+
+            SqlParameter courseIDParam = new SqlParameter("@ID", SqlDbType.Int);
+            courseIDParam.Value = courseObj.ID;
+
+            courseCommand.Parameters.Add(courseIDParam);
+            registraionCommand.Parameters.Add(courseIDParam);
+
+            Console.WriteLine("Course Info: ");
+            CommonUI.ShowTable(dataAccess.Query(courseCommand));
+
+            Console.WriteLine("Registration Info: ");
+            CommonUI.ShowTable(dataAccess.Query(registraionCommand));
+        }
+
+        public DataTable QueryFullTable()
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM REGISTRAION");
+
+            return dataAccess.Query(command);
         }
 
         public void Update(Registration regObj)

@@ -2,23 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using StudentDb.Entities;
+using StudentDb.DataLayer;
 
 namespace StudentDb.UserInterface
 {
     class RegistrationUI
     {
+        private RegistrationData registraionData = new RegistrationData();
+
         public void Start()
         {
             string input;
 
             do
             {
-                Console.WriteLine("Course Commands:");
+                Console.WriteLine("Registraion Commands:");
                 Console.WriteLine("==========================");
-                Console.WriteLine("Query:\t1,");
-                Console.WriteLine("Insert:\t2,");
-                Console.WriteLine("Update:\t3,");
-                Console.WriteLine("Delete:\t4,");
+                Console.WriteLine("Query by Student:\t1,");
+                Console.WriteLine("Query by Course:\t2");
+                Console.WriteLine("Query Full Table:\t3");
+                Console.WriteLine("Insert:\t4,");
+                Console.WriteLine("Update:\t5,");
+                Console.WriteLine("Delete One Registraion:\t6,");
+                Console.WriteLine("Delete Full Registraion:\t7,");
                 Console.WriteLine("Go Back:\t0");
                 Console.WriteLine("==========================");
                 Console.Write("Enter Command Here: ");
@@ -28,19 +35,31 @@ namespace StudentDb.UserInterface
                 switch (input)
                 {
                     case "1":
-                        Query();
+                        QueryByStudent();
                         break;
 
                     case "2":
-                        Insert();
+                        QueryByCourse();
                         break;
 
                     case "3":
-                        Update();
+                        QueryFullTable();
                         break;
 
                     case "4":
-                        Delete();
+                        Insert();
+                        break;
+
+                    case "5":
+                        Update();
+                        break;
+
+                    case "6":
+                        DeleteOneRegistraion();
+                        break;
+
+                    case "7":
+                        DeleteAllResitraion();
                         break;
 
                     case "0":
@@ -54,17 +73,61 @@ namespace StudentDb.UserInterface
             } while (true);
         }
 
-        public void Query()
+        public void QueryByStudent()
         {
+            Student studentObj = new Student();
 
+            Console.Write("Enter Student ID: ");
+            studentObj.ID = int.Parse(Console.ReadLine());
+
+            registraionData.QueryByStudent(studentObj);
+        }
+
+        public void QueryByCourse()
+        {
+            Course courseObj = new Course();
+
+            Console.Write("Enter Course ID: ");
+            courseObj.ID = int.Parse(Console.ReadLine());
+
+            registraionData.QueryByCourse(courseObj);
+        }
+
+        public void QueryFullTable()
+        {
+            CommonUI.ShowTable(registraionData.QueryFullTable());
         }
 
         public void Insert()
         {
+            Registration regObj = new Registration();
 
+            StudentData studentData = new StudentData();
+            CourseData courseData = new CourseData();
+
+            studentData.Query();
+            Console.WriteLine();
+
+            Console.Write("Insert Student ID: ");
+            regObj.STUDENTID = int.Parse(Console.ReadLine());
+
+            courseData.Query();
+            Console.WriteLine();
+
+            Console.Write("Insert Course ID: ");
+            regObj.COURSEID = int.Parse(Console.ReadLine());
+
+            registraionData.Insert(regObj);
+
+            QueryFullTable();
         }
 
-        public void Delete()
+        public void DeleteOneRegistraion()
+        {
+            
+        }
+
+        public void DeleteAllResitraion()
         {
 
         }
