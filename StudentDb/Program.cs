@@ -46,8 +46,10 @@ namespace StudentDb
                         break;
 
                     case "4":
-                        //Write code here to manage Registration
+                        RegistrationUI registraionUI = new RegistrationUI();
+                        registraionUI.Start();
                         break;
+                    
                     case "5":
                     //Write code here to manage Course Teacher
                         break;

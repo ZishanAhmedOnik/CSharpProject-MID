@@ -16,7 +16,7 @@ namespace StudentDb.DataLayer
 
         public void Insert(Registration regObj)
         {
-            string insertQuery = "INSERT INTO Registration (STUDENTID, COURSEID) VALUES (@STUDENTID, @COURSEID)";
+            string insertQuery = "INSERT INTO Registraton (STUDENTID, COURSEID) VALUES (@STUDENTID, @COURSEID)";
 
             SqlCommand insertCommand = new SqlCommand(insertQuery);
 
@@ -35,7 +35,7 @@ namespace StudentDb.DataLayer
         public void QueryByStudent(Student studentObje)
         {
             string studentQuery = "SELECT * FROM Student WHERE ID = @ID";
-            string registrationQuery = "SELECT * FROM Registraion WHERE STUDENTID = @ID";
+            string registrationQuery = "SELECT * FROM Registraton WHERE STUDENTID = @ID";
 
             SqlCommand studentCommand = new SqlCommand(studentQuery);
             SqlCommand registrationCommand = new SqlCommand(registrationQuery);
@@ -56,7 +56,7 @@ namespace StudentDb.DataLayer
         public void QueryByCourse(Course courseObj)
         {
             string courseQuery = "SELECT * FROM Course WHERE ID = @ID";
-            string registraionQuery = "SELECT * FROM Registration WHERE COURSEID = @ID";
+            string registraionQuery = "SELECT * FROM Registraton WHERE COURSEID = @ID";
 
             SqlCommand courseCommand = new SqlCommand(courseQuery);
             SqlCommand registraionCommand = new SqlCommand(registraionQuery);
@@ -76,14 +76,14 @@ namespace StudentDb.DataLayer
 
         public DataTable QueryFullTable()
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM REGISTRAION");
+            SqlCommand command = new SqlCommand("SELECT * FROM Registraton");
 
             return dataAccess.Query(command);
         }
 
         public void Update(Registration regObj)
         {
-            string updateQuery = "UPDATE Registration SET COURSEID = @COURSEID WHERE STUDENTID = @STUDENTID";
+            string updateQuery = "UPDATE Registraton SET COURSEID = @COURSEID WHERE STUDENTID = @STUDENTID";
 
             SqlCommand updateCommand = new SqlCommand(updateQuery);
 
@@ -101,7 +101,7 @@ namespace StudentDb.DataLayer
 
         public void DeleteOneRegistraion(Registration regObj)
         {
-            string deleteQuery = "DELETE Registraion WHERE STUDENTID = @STUDENTID AND COURSEID = @COURSEID";
+            string deleteQuery = "DELETE Registraton WHERE STUDENTID = @STUDENTID AND COURSEID = @COURSEID";
 
             SqlCommand deleteCommand = new SqlCommand(deleteQuery);
 
@@ -116,7 +116,7 @@ namespace StudentDb.DataLayer
 
         public void DeleteAllRegistraion(int studentID)
         {
-            string deleteAllQuery = "DELETE Registraion WHERE ID = @STUDENTID";
+            string deleteAllQuery = "DELETE Registraton WHERE ID = @STUDENTID";
 
             SqlCommand deleteAllCommand = new SqlCommand(deleteAllQuery);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using StudentDb.Entities;
+using StudentDb.UserInterface;
 using StudentDb.DataLayer;
 
 namespace StudentDb.UserInterface
@@ -20,8 +21,8 @@ namespace StudentDb.UserInterface
                 Console.WriteLine("Registraion Commands:");
                 Console.WriteLine("==========================");
                 Console.WriteLine("Query by Student:\t1,");
-                Console.WriteLine("Query by Course:\t2");
-                Console.WriteLine("Query Full Table:\t3");
+                Console.WriteLine("Query by Course:\t2,");
+                Console.WriteLine("Query Full Table:\t3,");
                 Console.WriteLine("Insert:\t4,");
                 Console.WriteLine("Update:\t5,");
                 Console.WriteLine("Delete One Registraion:\t6,");
@@ -102,16 +103,16 @@ namespace StudentDb.UserInterface
         {
             Registration regObj = new Registration();
 
-            StudentData studentData = new StudentData();
-            CourseData courseData = new CourseData();
+            StudentUI studnetUI = new StudentUI();
+            CourseUI courseUI = new CourseUI();
 
-            studentData.Query();
+            studnetUI.Query();
             Console.WriteLine();
 
             Console.Write("Insert Student ID: ");
             regObj.STUDENTID = int.Parse(Console.ReadLine());
 
-            courseData.Query();
+            courseUI.Query();
             Console.WriteLine();
 
             Console.Write("Insert Course ID: ");
