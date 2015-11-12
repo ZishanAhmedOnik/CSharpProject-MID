@@ -129,17 +129,50 @@ namespace StudentDb.UserInterface
 
         public void DeleteOneRegistraion()
         {
-            
+            Registration regObj = new Registration();
+            Student studentObj = new Student();
+
+            studnetUI.Query();
+            Console.Write("Enter Student ID: ");
+            regObj.STUDENTID = int.Parse(Console.ReadLine());
+            studentObj.ID = regObj.STUDENTID;
+
+            registraionData.QueryByStudent(studentObj);
+            Console.Write("Enter Course ID: ");
+            regObj.COURSEID = int.Parse(Console.ReadLine());
+
+            registraionData.DeleteOneRegistraion(regObj);
         }
 
         public void DeleteAllResitraion()
         {
+            studnetUI.Query();
+            int id = 0;
 
+            Console.Write("Enter Student ID: ");
+            id = int.Parse(Console.ReadLine());
+
+            registraionData.DeleteAllRegistraion(id);
         }
 
         public void Update()
         {
+            Registration regObj = new Registration();
 
+            QueryByStudent();
+
+            Console.Write("Enter Studend ID: ");
+            regObj.STUDENTID = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Course ID to Change: ");
+            regObj.COURSEID = int.Parse(Console.ReadLine());
+
+            courseUI.Query();
+
+            Console.Write("Enter New Course ID: ");
+            int newId = int.Parse(Console.ReadLine());
+
+            registraionData.Update(regObj, newId);
         }
     }
 }

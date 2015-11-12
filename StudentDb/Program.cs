@@ -23,7 +23,6 @@ namespace StudentDb
                 Console.WriteLine("Teacher:\t2,");
                 Console.WriteLine("Course:\t3,");
                 Console.WriteLine("Registration:\t4,");
-                Console.WriteLine("CourseTeacher:\t5,");
                 Console.WriteLine("Exit:\t0");
                 Console.WriteLine("==========================");
                 Console.Write("Enter Command Here: ");
@@ -49,10 +48,7 @@ namespace StudentDb
                         RegistrationUI registraionUI = new RegistrationUI();
                         registraionUI.Start();
                         break;
-                    
-                    case "5":
-                    //Write code here to manage Course Teacher
-                        break;
+
                     case "0":
                         return;
 

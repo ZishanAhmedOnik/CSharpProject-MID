@@ -59,7 +59,7 @@ namespace StudentDb.DataLayer
 
         private void ShowCourseName(DataTable dt)
         {
-            string courseCommand = "SELECT NAME FROM Course WHERE ID = ";
+            string courseCommand = "SELECT * FROM Course WHERE ID = ";
 
             bool start = true;
 
@@ -107,7 +107,7 @@ namespace StudentDb.DataLayer
 
         private void ShowStudentName(DataTable dt)
         {
-            string courseCommand = "SELECT NAME FROM Student WHERE ID = ";
+            string courseCommand = "SELECT * FROM Student WHERE ID = ";
 
             bool start = true;
 
@@ -135,20 +135,25 @@ namespace StudentDb.DataLayer
             return dataAccess.Query(command);
         }
 
-        public void Update(Registration regObj)
+        public void Update(Registration regObj, int changedCourseID)
         {
-            string updateQuery = "UPDATE Registraton SET COURSEID = @COURSEID WHERE STUDENTID = @STUDENTID";
+            string updateQuery = "UPDATE Registraton SET COURSEID = @COURSEID WHERE STUDENTID = @STUDENTID AND COURSEID = @COURSEIDTOSET";
 
             SqlCommand updateCommand = new SqlCommand(updateQuery);
 
             SqlParameter studentIDParam = new SqlParameter("@STUDENTID", SqlDbType.Int);
             studentIDParam.Value = regObj.STUDENTID;
 
-            SqlParameter courseIDParam = new SqlParameter("@COURSEID", SqlDbType.Int);
-            courseIDParam.Value = regObj.COURSEID;
+            SqlParameter courseToSetIDParam = new SqlParameter("@COURSEIDTOSET", SqlDbType.Int);
+            courseToSetIDParam.Value = regObj.COURSEID;
 
-            updateCommand.Parameters.Add(courseIDParam);
+            SqlParameter changedCourseIDParam = new SqlParameter("@COURSEID", SqlDbType.Int);
+            changedCourseIDParam.Value = changedCourseID;
+
+            updateCommand.Parameters.Add(courseToSetIDParam);
             updateCommand.Parameters.Add(studentIDParam);
+            updateCommand.Parameters.Add(changedCourseIDParam);
+            
 
             dataAccess.Execute(updateCommand);
         }
