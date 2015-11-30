@@ -1,0 +1,5 @@
+c:\users\student\documents\visual studio 2010\Projects\UI\Framework\bin\Debug\Framework.dll
+c:\users\student\documents\visual studio 2010\Projects\UI\Framework\bin\Debug\Framework.pdb
+c:\users\student\documents\visual studio 2010\Projects\UI\Framework\obj\Debug\ResolveAssemblyReference.cache
+c:\users\student\documents\visual studio 2010\Projects\UI\Framework\obj\Debug\Framework.dll
+c:\users\student\documents\visual studio 2010\Projects\UI\Framework\obj\Debug\Framework.pdb

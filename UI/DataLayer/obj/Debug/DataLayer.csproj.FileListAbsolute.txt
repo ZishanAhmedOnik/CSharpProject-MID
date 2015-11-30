@@ -1,0 +1,9 @@
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\obj\Debug\ResolveAssemblyReference.cache
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\bin\Debug\DataLayer.dll
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\bin\Debug\DataLayer.pdb
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\bin\Debug\Entities.dll
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\bin\Debug\Framework.dll
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\bin\Debug\Entities.pdb
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\bin\Debug\Framework.pdb
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\obj\Debug\DataLayer.dll
+c:\users\student\documents\visual studio 2010\Projects\UI\DataLayer\obj\Debug\DataLayer.pdb
